@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "405252795984",
+    "firebase_url": "https://sip-kkulkuk.firebaseio.com",
+    "project_id": "sip-kkulkuk",
+    "storage_bucket": "sip-kkulkuk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405252795984:android:51e2c7c561d9700af8ab55",
+        "android_client_info": {
+          "package_name": "com.baekdev.sip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405252795984-nj8rf1tfktp7vgpd16ltt6sk1gkillav.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.baekdev.sip",
+            "certificate_hash": "7db930d5f9964f2a3e4be28217573f2ac3a8e2e4"
+          }
+        },
+        {
+          "client_id": "405252795984-vio57evqflgvepjfi1fvmml3f9tq06uo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFkQymNFijrk1X9d0Pi8y3msp-_82HGxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405252795984-vio57evqflgvepjfi1fvmml3f9tq06uo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Sip</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="signupbutton">Sign Up</string>
+    <string name="signinbutton">Sign In</string>
+    <string name="signinviagoogle">Sign In via Google</string>
+    <string name="signinviafacebook">Sign In via Facebook</string>
+    <string name="signinviakakao">Sign In via Kakao</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="passwordconfirm">Password Confirm</string>
+</resources>
