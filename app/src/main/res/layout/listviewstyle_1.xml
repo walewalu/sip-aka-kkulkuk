@@ -40,19 +40,21 @@
 
             <TextView
                 android:id="@+id/productRating"
-                android:layout_width="match_parent"
+                android:layout_width="127dp"
                 android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:text="TextView"
+                android:layout_weight="1"
+                android:text="0.0"
                 android:textSize="24sp" />
 
             <RatingBar
                 android:id="@+id/productRatingBar"
                 style="@style/Widget.AppCompat.RatingBar.Indicator"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:numStars="5" />
+                android:max="5"
+                android:numStars="5"
+                android:stepSize="0.5" />
 
         </LinearLayout>
     </LinearLayout>
