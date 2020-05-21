@@ -54,8 +54,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="271dp"
-        android:layout_height="120dp"
+        android:layout_width="269dp"
+        android:layout_height="93dp"
         android:layout_weight="1"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -67,37 +67,16 @@
         <Button
             android:id="@+id/signInButton"
             android:layout_width="match_parent"
-            android:layout_height="66dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/signinbutton" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/signInGoogle"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/signInKakao"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/signinviakakao" />
-
-            <Button
-                android:id="@+id/signInGoogle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/signinviagoogle" />
-
-            <Button
-                android:id="@+id/signInFb"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/signinviafacebook" />
-        </LinearLayout>
+            android:layout_weight="1"
+            android:text="@string/signinviagoogle" />
 
     </LinearLayout>
 
