@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -56,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     public void replaceFragment(Fragment fragment){
         FragmentManager fm = getSupportFragmentManager();

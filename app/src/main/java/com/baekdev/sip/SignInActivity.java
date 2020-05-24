@@ -1,6 +1,7 @@
 package com.baekdev.sip;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -72,6 +73,20 @@ public class SignInActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
         updateUI(user);
+
+        //사용자의 이메일을 건네주기 위한 코드
+        if (user != null){
+            Log.d("태그","onAuthStateChanged:signed_in" +user.getUid());
+
+            SharedPreferences sharedPreferences = getSharedPreferences("email",MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("uid",user.getUid());
+            editor.putString("email",user.getEmail());
+            editor.apply();
+        }
+
+
+
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
