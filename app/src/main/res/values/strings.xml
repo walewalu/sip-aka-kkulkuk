@@ -9,7 +9,9 @@
     <string name="email">E-mail</string>
     <string name="password">Password</string>
     <string name="passwordconfirm">Password Confirm</string>
+    <string name="tab_1">Beverage</string>
+    <string name="tab_2">Brand</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 </resources>

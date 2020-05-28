@@ -1,15 +1,11 @@
 package com.baekdev.sip;
 
-
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -24,15 +20,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -46,9 +39,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Hashtable;
 
 public class MyPageFragment extends Fragment {
@@ -63,13 +54,15 @@ public class MyPageFragment extends Fragment {
     public MyPageFragment() {
         // Required empty public constructor
     }
-    ImageView img_V;
+
+    private ImageView img_V;
     private StorageReference mStorageRef;
-    Bitmap bitmap;
-    String stEmail;
-    String stUid;
-    String User;
-    TextView name;
+    private Bitmap bitmap;
+    private String stEmail;
+    private String stUid;
+    private String User;
+    private TextView name;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -103,11 +96,6 @@ public class MyPageFragment extends Fragment {
             }
         }
 
-
-
-
-
-
         img_V.setOnClickListener(new View.OnClickListener() {
             @Override //이미지 불러오기기(갤러리 접근)
             public void onClick(View v) {
@@ -131,10 +119,6 @@ public class MyPageFragment extends Fragment {
 
             }
         });
-
-
-
-
         return view;
     }
 
@@ -199,7 +183,6 @@ public class MyPageFragment extends Fragment {
                 }
             }
         });
-
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -230,6 +213,4 @@ public class MyPageFragment extends Fragment {
 
         }
     }
-
-
 }

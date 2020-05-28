@@ -51,6 +51,7 @@
         android:layout_height="wrap_content"
         android:text="이름 저장"
         tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="509dp" />
+        tools:layout_editor_absoluteY="509dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
