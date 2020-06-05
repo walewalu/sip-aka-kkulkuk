@@ -10,11 +10,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class MainActivity extends AppCompatActivity {
-    private BottomNavigationView bottomNavigationView;
     private FragmentManager fm = getSupportFragmentManager();
     private SearchFragment searchFragment = new SearchFragment();
     private CategoryFragment categoryFragment = new CategoryFragment();
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             ft.replace(R.id.frameLayout, searchFragment).commitAllowingStateLoss();
         }
 
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -59,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
     public void replaceFragment(Fragment fragment){
         FragmentManager fm = getSupportFragmentManager();
