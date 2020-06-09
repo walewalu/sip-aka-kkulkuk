@@ -26,11 +26,33 @@ public class CategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_category, container, false);
-        CategoryPagerAdapter categoryPagerAdapter = new CategoryPagerAdapter(2, getContext(), getChildFragmentManager());
-        ViewPager viewPager = view.findViewById(R.id.view_pager);
-        viewPager.setAdapter(categoryPagerAdapter);
         TabLayout tabs = view.findViewById(R.id.tabs);
-        tabs.setupWithViewPager(viewPager);
+
+        tabs.addTab(tabs.newTab().setText(R.string.tab_1));
+        tabs.addTab(tabs.newTab().setText(R.string.tab_2));
+
+        final ViewPager viewPager = view.findViewById(R.id.view_pager);
+        final CategoryPagerAdapter categoryPagerAdapter = new CategoryPagerAdapter(2, getContext(), getChildFragmentManager());
+        viewPager.setAdapter(categoryPagerAdapter);
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabs));
+        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
         return view;
     }
 }

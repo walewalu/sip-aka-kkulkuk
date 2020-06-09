@@ -2,12 +2,9 @@ package com.baekdev.sip.ui.category;
 
 import android.content.Context;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-
-import com.baekdev.sip.R;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -16,7 +13,6 @@ import com.baekdev.sip.R;
 public class CategoryPagerAdapter extends FragmentPagerAdapter {
 
     private int mNumTabs;
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_1, R.string.tab_2};
     private final Context mContext;
 
     public CategoryPagerAdapter(int numTabs, Context context, FragmentManager fm) {
@@ -31,20 +27,14 @@ public class CategoryPagerAdapter extends FragmentPagerAdapter {
         // Return a PlaceholderFragment (defined as a static inner class below).
         switch (position){
             case 0 :
-                CategoryTabFragment tab1 = new CategoryTabFragment();
+                CategoryTab1Fragment tab1 = new CategoryTab1Fragment();
                 return tab1;
             case 1:
-                CategoryTabFragment2 tab2 = new CategoryTabFragment2();
+                CategoryTab2Fragment tab2 = new CategoryTab2Fragment();
                 return tab2;
             default:
                 return null;
         }
-    }
-
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return mContext.getResources().getString(TAB_TITLES[position]);
     }
 
     @Override
