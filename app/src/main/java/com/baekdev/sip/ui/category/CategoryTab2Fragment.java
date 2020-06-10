@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.baekdev.sip.ItemInfoFragment;
 import com.baekdev.sip.MainActivity;
 import com.baekdev.sip.R;
+import com.baekdev.sip.ui.itemlist.ItemListFragment;
 
 public class CategoryTab2Fragment extends Fragment {
     private String[] cats = {"STARBUCKS", "TOM 'N TOMS", "TWOSOME PLACE"};
@@ -52,7 +53,7 @@ public class CategoryTab2Fragment extends Fragment {
                 int image = data.getImages();
                 String cat = data.getCategoryName();
 
-                ((MainActivity)getActivity()).replaceFragment(ItemInfoFragment.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(ItemListFragment.newInstance());
             }
         });
 

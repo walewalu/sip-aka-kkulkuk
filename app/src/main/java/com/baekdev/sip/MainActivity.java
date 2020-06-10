@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if (findViewById(R.id.frameLayout) != null) {
-            if (savedInstanceState != null){
+            if (savedInstanceState != null) {
                 return;
             }
             FragmentTransaction ft = fm.beginTransaction();

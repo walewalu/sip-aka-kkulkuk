@@ -1,7 +1,5 @@
 package com.baekdev.sip.ui.category;
 
-import android.graphics.drawable.Drawable;
-
 class CategoryData {
     private int mImages;
     private String mCats;

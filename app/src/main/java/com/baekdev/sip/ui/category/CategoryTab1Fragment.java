@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.baekdev.sip.ItemInfoFragment;
 import com.baekdev.sip.MainActivity;
 import com.baekdev.sip.R;
+import com.baekdev.sip.ui.itemlist.ItemListFragment;
 
 public class CategoryTab1Fragment extends Fragment{
     private String[] cats = {"Coffee", "Beverage", "Tea", "Dessert"};
@@ -50,7 +51,7 @@ public class CategoryTab1Fragment extends Fragment{
                 int image = data.getImages();
                 String cat = data.getCategoryName();
 
-                ((MainActivity)getActivity()).replaceFragment(ItemInfoFragment.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(ItemListFragment.newInstance());
             }
         });
 
