@@ -1,27 +1,21 @@
 package com.baekdev.sip.ui.category;
 
 class CategoryData {
-    private int mImages;
-    private String mCats;
+    private int mImageSrc;
+    private String mCat;
 
-    CategoryData(int images, String cats){
-        this.mImages = images;
-        this.mCats = cats;
+    CategoryData(){}
+
+    CategoryData(int imageSrc, String cat){
+        this.mImageSrc = imageSrc;
+        this.mCat = cat;
     }
 
-    public void setImages(int images){
-        mImages = images;
-    }
-
-    public void setCategoryName(String cats){
-        mCats = cats;
-    }
-
-    public int getImages(){
-        return mImages;
+    public int getImageSrc(){
+        return mImageSrc;
     }
 
     public String getCategoryName(){
-        return mCats;
+        return mCat;
     }
 }

@@ -11,12 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.baekdev.sip.R;
+import com.bumptech.glide.Glide;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
 public class CategoryListViewAdapter extends BaseAdapter {
     private ArrayList<CategoryData> catDataList = new ArrayList<CategoryData>();
-
     public CategoryListViewAdapter(){
 
     }
@@ -26,8 +28,8 @@ public class CategoryListViewAdapter extends BaseAdapter {
         return catDataList.size();
     }
 
-    public void addItem(int image, String cat){
-        catDataList.add(new CategoryData(image, cat));
+    public void addItem(int imageSrc, String cat){
+        catDataList.add(new CategoryData(imageSrc, cat));
     }
 
     @Override
@@ -52,10 +54,9 @@ public class CategoryListViewAdapter extends BaseAdapter {
 
         ImageView imageView = (ImageView) convertView.findViewById(R.id.imgc);
         TextView textView = (TextView) convertView.findViewById(R.id.txtc);
-
         CategoryData catData = catDataList.get(position);
 
-        imageView.setImageResource(catData.getImages());
+        imageView.setImageResource(catData.getImageSrc());
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setColorFilter(Color.LTGRAY, PorterDuff.Mode.MULTIPLY);
         textView.setText(catData.getCategoryName());

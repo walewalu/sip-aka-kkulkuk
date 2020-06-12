@@ -6,14 +6,20 @@ public class ItemData {
     private String mCat;
     private int mImage;
     private int mPrice;
+    private float mRating;
+    private int mFav;
+    private int Uri;
 
-    ItemData(String name, String store, String cats, int images, int price){
+    public ItemData(){ }
+
+    public ItemData(String name, String store, String cats, int images, int price){
         this.mName = name;
         this.mStore = store;
         this.mCat = cats;
         this.mImage = images;
         this.mPrice = price;
-
+        this.mRating = 0.0f;
+        this.mFav = 0;
     }
 
     public void setName(String s){
@@ -31,6 +37,8 @@ public class ItemData {
     public void setPrice(int i){
         mPrice = i;
     }
+    public void setRating(float f) { mRating = f; }
+    public void setFav(int i) { mFav = i; }
 
     public String getName(){
         return mName;
@@ -46,5 +54,11 @@ public class ItemData {
     }
     public int getPrice(){
         return mPrice;
+    }
+    public float getRating(){
+        return mRating;
+    }
+    public int getFav(){
+        return mFav;
     }
 }

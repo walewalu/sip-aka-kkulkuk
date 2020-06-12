@@ -8,17 +8,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.baekdev.sip.ItemInfoFragment;
 import com.baekdev.sip.MainActivity;
 import com.baekdev.sip.R;
-import com.baekdev.sip.ui.itemlist.ItemListFragment;
+import com.baekdev.sip.ui.itemlist.ItemListFragment1;
+import com.baekdev.sip.ui.itemlist.ItemListFragment2;
 
 public class CategoryTab2Fragment extends Fragment {
-    private String[] cats = {"STARBUCKS", "TOM 'N TOMS", "TWOSOME PLACE"};
-    private int[] images = {R.drawable.category2_img_1, R.drawable.category2_img_2, R.drawable.category2_img_3};
+    private String[] cats = {"Starbucks", "The Coffee Bean"};
+    private int[] images = {R.drawable.category2_img_1, R.drawable.coffeebean};
 
     public CategoryTab2Fragment() {
         // Required empty public constructor
@@ -38,6 +36,7 @@ public class CategoryTab2Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_category_tab2, container, false);
+
         ListView listView = (ListView) view.findViewById(R.id.category_list2);
         CategoryListViewAdapter adapter = new CategoryListViewAdapter();
         listView.setAdapter(adapter);
@@ -50,10 +49,13 @@ public class CategoryTab2Fragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 CategoryData data = (CategoryData) parent.getItemAtPosition(position);
-                int image = data.getImages();
+                int image = data.getImageSrc();
                 String cat = data.getCategoryName();
-
-                ((MainActivity)getActivity()).replaceFragment(ItemListFragment.newInstance());
+                ItemListFragment2 newFragment = ItemListFragment2.newInstance();
+                Bundle bundle = new Bundle();
+                bundle.putString("Value", cat);
+                newFragment.setArguments(bundle);
+                ((MainActivity)getActivity()).replaceFragment(newFragment);
             }
         });
 
