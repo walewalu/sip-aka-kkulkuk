@@ -9,7 +9,10 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.baekdev.sip.ui.itemlist.ItemDTO;
@@ -29,14 +32,18 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ItemInfoActivity extends AppCompatActivity {
     private ItemDTO data;
+    RatingBar ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_info);
-
+        Button btn_rating = (Button)findViewById(R.id.button_ratingg);
         final ImageView imageView = (ImageView) findViewById(R.id.info_image);
         final TextView textView_name = (TextView) findViewById(R.id.info_name);
         final TextView textView_store = (TextView) findViewById(R.id.info_store);
@@ -57,7 +64,7 @@ public class ItemInfoActivity extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         // final DocumentReference docRef = db.collection(store).document(id);
-        DocumentReference docRef = db.collection("coffeebean").document("cbeanblended1001");
+        final DocumentReference docRef = db.collection("coffeebean").document("cbeanblended1001");
         final FirebaseStorage storage = FirebaseStorage.getInstance();
 
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -90,5 +97,33 @@ public class ItemInfoActivity extends AppCompatActivity {
 
         textView_price.setTextColor(Color.BLACK);
         textView_price.setShadowLayer(1.0f, 1.0f,1.0f, Color.GRAY);
+
+        //ratingBar와 연동
+        ratingBar = (RatingBar)findViewById(R.id.infoRating);
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener(){
+            @Override
+            public void onRatingChanged(RatingBar ratingBar1, final float rating, boolean fromUser){
+               //현재 내가 정한 평점을 저장
+                data.setRating(rating);
+            }
+        });
+
+        // 확인 버튼 클릭시 평점이 데이터 베이스에 저장 밑 창 닫음
+        btn_rating.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("rating",data.getRating());
+                docRef.update(map);
+                Log.v("msg",Float.toString(data.getRating()));
+                finish();
+            }
+        });
+
+
+
     }
+
 }
