@@ -21,6 +21,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -38,6 +39,9 @@ import java.util.Map;
 public class ItemInfoActivity extends AppCompatActivity {
     private ItemDTO data;
     RatingBar ratingBar;
+    float person = 0.0f;
+    float fin_rating = 0.0f;
+    float pre_rating = 0.0f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +81,8 @@ public class ItemInfoActivity extends AppCompatActivity {
                         textView_name.setText(data.getName());
                         textView_store.setText(data.getStore());
                         textView_price.setText(data.getPrice() + "원~");
+                        person = data.getRating_person();
+                        pre_rating = data.getRating();
                         StorageReference ref = storage.getReference().child(document.getString("imageSrc"));
                         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
@@ -105,6 +111,7 @@ public class ItemInfoActivity extends AppCompatActivity {
             @Override
             public void onRatingChanged(RatingBar ratingBar1, final float rating, boolean fromUser){
                //현재 내가 정한 평점을 저장
+
                 data.setRating(rating);
             }
         });
@@ -114,10 +121,17 @@ public class ItemInfoActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                HashMap<String, Object> map = new HashMap<>();
-                map.put("rating",data.getRating());
-                docRef.update(map);
-                Log.v("msg",Float.toString(data.getRating()));
+
+                HashMap<String, Object> rating_map = new HashMap<>();
+                HashMap<String, Object> person_map = new HashMap<>();
+
+                rating_map.put("rating",data.getRating()+pre_rating);
+                person_map.put("rating_person",person+1);
+                docRef.update(rating_map);
+                docRef.update(person_map);
+
+                fin_rating = (data.getRating()+pre_rating)/person;
+                Log.v("평점",Float.toString(fin_rating));
                 finish();
             }
         });

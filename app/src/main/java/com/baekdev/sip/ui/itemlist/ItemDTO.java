@@ -9,29 +9,32 @@ public class ItemDTO {
     private String cat;
     private int price;
     private float rating;
+    private float rating_person;
     private int fav;
     private String id;
     private Uri uri;
 
     public ItemDTO(){ }
 
-    public ItemDTO(String imageSrc, String name, String store, String cat, int price, float rating, int fav){
+    public ItemDTO(String imageSrc, String name, String store, String cat, int price, float rating, float rating_person ,int fav){
         this.imageSrc = imageSrc;
         this.name = name;
         this.store = store;
         this.cat = cat;
         this.price = price;
         this.rating = rating;
+        this.rating_person = rating_person;
         this.fav = fav;
     }
 
-    public ItemDTO(String imageSrc, String name, String store, String cat, int price, float rating, int fav, String id, Uri uri){
+    public ItemDTO(String imageSrc, String name, String store, String cat, int price, float rating, float rating_person, int fav, String id, Uri uri){
         this.imageSrc = imageSrc;
         this.name = name;
         this.store = store;
         this.cat = cat;
         this.price = price;
         this.rating = rating;
+        this.rating_person = rating_person;
         this.fav = fav;
         this.id = id;
         this.uri = uri;
@@ -54,6 +57,9 @@ public class ItemDTO {
     }
     public void setRating(float f){
         rating = f;
+    }
+    public void setRating_person(float p){
+        rating_person = p;
     }
     public void setFav(int i){
         fav = i;
@@ -78,6 +84,9 @@ public class ItemDTO {
     }
     public float getRating(){
         return rating;
+    }
+    public float getRating_person(){
+        return rating_person;
     }
     public int getFav(){
         return fav;

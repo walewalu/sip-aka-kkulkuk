@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<ItemDTO> items = new ArrayList<ItemDTO>();
         items.add(new ItemDTO("store/coffeebean/blended/Sparkling Mango.jpg",
                 "스파클링 망고", "커피빈",
-                "Soda", 6300, 0.0f, 0));
+                "Soda", 6300, 0.0f, 0.0f, 0));
 
         int n = 1;
         for (ItemDTO i : items){

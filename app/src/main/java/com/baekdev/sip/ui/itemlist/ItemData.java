@@ -7,6 +7,7 @@ public class ItemData {
     private int mImage;
     private int mPrice;
     private float mRating;
+    private float mRating_person;
     private int mFav;
     private int Uri;
 
@@ -19,6 +20,7 @@ public class ItemData {
         this.mImage = images;
         this.mPrice = price;
         this.mRating = 0.0f;
+        this.mRating_person = 0.0f;
         this.mFav = 0;
     }
 
@@ -38,6 +40,7 @@ public class ItemData {
         mPrice = i;
     }
     public void setRating(float f) { mRating = f; }
+    public void setRating_person(float p) { mRating_person = p; }
     public void setFav(int i) { mFav = i; }
 
     public String getName(){
@@ -57,6 +60,9 @@ public class ItemData {
     }
     public float getRating(){
         return mRating;
+    }
+    public float getRating_person(){
+        return mRating_person;
     }
     public int getFav(){
         return mFav;
