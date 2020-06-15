@@ -2,6 +2,7 @@ package com.baekdev.sip;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -11,6 +12,8 @@ import android.view.MenuItem;
 
 import com.baekdev.sip.ui.itemlist.ItemDTO;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -19,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fm = getSupportFragmentManager();
     private SearchFragment searchFragment = new SearchFragment();
     private CategoryFragment categoryFragment = new CategoryFragment();
-    private NewsfeedFragment newsfeedFragment = new NewsfeedFragment();
     private MyPageFragment myPageFragment = new MyPageFragment();
     private FirebaseFirestore db;
 
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user == null) finish();
 
         db = FirebaseFirestore.getInstance();
 
@@ -37,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
             FragmentTransaction ft = fm.beginTransaction();
             ft.replace(R.id.frameLayout, searchFragment).commitAllowingStateLoss();
         }
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app_toolbar);
+        setSupportActionBar(toolbar);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(
@@ -50,9 +58,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.categoryItem:
                         ft.replace(R.id.frameLayout, categoryFragment).commitAllowingStateLoss();
-                        break;
-                    case R.id.newsfeedItem:
-                        ft.replace(R.id.frameLayout, newsfeedFragment).commitAllowingStateLoss();
                         break;
                     case R.id.myPageItem:
                         ft.replace(R.id.frameLayout, myPageFragment).commitAllowingStateLoss();
@@ -77,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<ItemDTO> items = new ArrayList<ItemDTO>();
         items.add(new ItemDTO("store/coffeebean/blended/Sparkling Mango.jpg",
                 "스파클링 망고", "커피빈",
-                "Soda", 6300, 0.0f, 0.0f, 0));
+                "Soda", 6300, 0.0f, 0, 0));
 
         int n = 1;
         for (ItemDTO i : items){

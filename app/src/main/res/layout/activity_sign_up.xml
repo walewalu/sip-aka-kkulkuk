@@ -10,7 +10,10 @@
         android:id="@+id/SignUpTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/jalnan"
         android:text="@string/sign_up"
+        android:textColor="@color/colorPrimary"
+        android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -73,7 +76,10 @@
             android:id="@+id/signUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/signupbutton" />
+            android:background="@color/colorAccent"
+            android:fontFamily="@font/jalnan"
+            android:text="@string/signupbutton"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

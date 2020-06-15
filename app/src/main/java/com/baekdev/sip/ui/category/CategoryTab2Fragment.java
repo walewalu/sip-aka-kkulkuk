@@ -15,8 +15,8 @@ import com.baekdev.sip.ui.itemlist.ItemListFragment1;
 import com.baekdev.sip.ui.itemlist.ItemListFragment2;
 
 public class CategoryTab2Fragment extends Fragment {
-    private String[] cats = {"Starbucks", "The Coffee Bean"};
-    private int[] images = {R.drawable.category2_img_1, R.drawable.coffeebean};
+    private String[] cats = {"Starbucks Coffee", "The Coffee Bean"};
+    private int[] images = {R.drawable.starbucks, R.drawable.coffeebean};
 
     public CategoryTab2Fragment() {
         // Required empty public constructor

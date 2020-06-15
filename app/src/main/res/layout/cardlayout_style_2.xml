@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relative_layout"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="80dp">
 
     <LinearLayout
+        android:id="@+id/layout_style2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/layout_style2">
+        android:layout_height="match_parent"
+        android:fadingEdgeLength="1dp"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/item_image"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_height="match_parent"
             android:layout_weight="6" />
 
         <LinearLayout
@@ -33,8 +32,10 @@
                 android:layout_marginStart="3sp"
                 android:layout_marginEnd="3sp"
                 android:layout_weight="1"
-                android:text="a"
-                android:textSize="16sp" />
+                android:fontFamily="@font/jalnan"
+                android:text="name"
+                android:textColor="@color/SipDarkGray"
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,9 +49,11 @@
                     android:id="@+id/store_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="3sp"
                     android:layout_marginEnd="3sp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/jalnan"
+                    android:text="store"
+                    android:textColor="@color/SiplightGray"
                     android:textSize="16sp" />
 
                 <TextView
@@ -60,13 +63,16 @@
                     android:layout_marginStart="3sp"
                     android:layout_marginEnd="3sp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/jalnan"
+                    android:textColor="@color/SiplightGray"
+                    android:text="price"
                     android:textSize="16sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_marginStart="3sp"
                 android:layout_marginEnd="3sp"
                 android:layout_weight="1"
@@ -74,37 +80,40 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
                     android:layout_marginStart="3sp"
-                    android:layout_marginEnd="3sp"
+                    android:fontFamily="@font/jalnan"
                     android:layout_weight="1"
-                    app:srcCompat="@android:drawable/btn_star" />
+                    app:srcCompat="@drawable/itemlist_rating" />
 
                 <TextView
-                    android:id="@+id/productRating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="0.0"
-                    android:textSize="24sp" />
+                    android:id="@+id/item_rating"
+                    android:layout_width="40dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="3sp"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/jalnan"
+                    android:text="0.00"
+                    android:textSize="16sp" />
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
                     android:layout_marginStart="3sp"
-                    android:layout_marginEnd="3sp"
                     android:layout_weight="1"
-                    app:srcCompat="@android:drawable/ic_menu_view" />
+                    app:srcCompat="@drawable/itemlist_like" />
 
                 <TextView
-                    android:id="@+id/productRating2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="00000"
-                    android:textSize="24sp" />
+                    android:id="@+id/item_fav"
+                    android:layout_width="40dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="3sp"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/jalnan"
+                    android:text="0"
+                    android:textSize="16sp" />
 
             </LinearLayout>
         </LinearLayout>

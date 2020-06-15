@@ -82,9 +82,6 @@ public class SignInActivity extends AppCompatActivity {
             editor.putString("email",user.getEmail());
             editor.apply();
         }
-
-
-
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

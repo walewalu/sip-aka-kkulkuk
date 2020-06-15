@@ -35,6 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:textColor="@color/SipDarkGray"
+            android:fontFamily="@font/jalnan"
             android:gravity="center"
             android:textSize="18sp" />
 
@@ -49,6 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
+                android:textColor="@color/SiplightGray"
+                android:fontFamily="@font/jalnan"
                 android:layout_weight="1"
                 android:gravity="right" />
 
@@ -57,6 +61,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
+                android:fontFamily="@font/jalnan"
+                android:textColor="@color/SiplightGray"
                 android:layout_weight="1"
                 android:gravity="left" />
         </LinearLayout>
@@ -64,7 +70,7 @@
     </LinearLayout>
 
     <RatingBar
-        android:id="@+id/infoRating"
+        android:id="@+id/info_rating"
         style="@style/Widget.AppCompat.RatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -81,7 +87,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button_ratingg"
+        android:id="@+id/info_accept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="확인"
@@ -89,8 +95,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infoRating"
+        app:layout_constraintTop_toBottomOf="@+id/info_rating"
         app:layout_constraintVertical_bias="0.079" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

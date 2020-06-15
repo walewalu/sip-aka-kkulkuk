@@ -26,18 +26,18 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
-public class ItemListFragment2 extends Fragment{
+public class ItemListFragment3 extends Fragment{
     private ArrayList<ItemDTO> myDataset = new ArrayList<ItemDTO>();
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    public ItemListFragment2() {
+    public ItemListFragment3() {
 
     }
 
-    public static ItemListFragment2 newInstance(){
-        return new ItemListFragment2();
+    public static ItemListFragment3 newInstance(){
+        return new ItemListFragment3();
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -52,8 +52,8 @@ public class ItemListFragment2 extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_itemlist_2, container, false);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_2);
+        View view = inflater.inflate(R.layout.fragment_itemlist_1, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_1);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getActivity());
@@ -63,23 +63,14 @@ public class ItemListFragment2 extends Fragment{
         recyclerView.setAdapter(mAdapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        //카테고리 프래그먼트로부터 정보를 받음
-        Bundle bundle = getArguments();
-        String value = bundle.getString("Value");
+        final Bundle bundle = getArguments();
+        final String value = bundle.getString("Value");
 
-        //점포명이 스타벅스인지 커피빈인지 판단
-        if (value.equals("Starbucks Coffee")) {
-            value = "starbucks";
-        } else if (value.equals("The Coffee Bean")) {
-            value = "coffeebean";
-        }
-
-        //파이어베이스 데이터베이스, 스토리지 사용
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         final FirebaseStorage storage = FirebaseStorage.getInstance();
+        CollectionReference mRef = db.collection("starbucks");
+        CollectionReference mRef2 = db.collection("coffeebean");
 
-        //해당 점포의 컬렉션만 탐색
-        CollectionReference mRef = db.collection(value);
         mRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -90,9 +81,33 @@ public class ItemListFragment2 extends Fragment{
                         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                i.setUri(uri.toString());
-                                myDataset.add(i);
-                                mAdapter.notifyDataSetChanged();
+                                if(i.getName().indexOf(value) != -1) {
+                                    i.setUri(uri.toString());
+                                    myDataset.add(i);
+                                    mAdapter.notifyDataSetChanged();
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+        });
+
+        mRef2.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        final ItemDTO i = document.toObject(ItemDTO.class);
+                        StorageReference ref = storage.getReference().child(document.getString("imageSrc"));
+                        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                if(i.getName().indexOf(value) != -1) {
+                                    i.setUri(uri.toString());
+                                    myDataset.add(i);
+                                    mAdapter.notifyDataSetChanged();
+                                }
                             }
                         });
                     }

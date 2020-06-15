@@ -9,14 +9,14 @@ public class ItemDTO {
     private String cat;
     private int price;
     private float rating;
-    private float rating_person;
+    private int rating_person;
     private int fav;
     private String id;
-    private Uri uri;
+    private String uri;
 
     public ItemDTO(){ }
 
-    public ItemDTO(String imageSrc, String name, String store, String cat, int price, float rating, float rating_person ,int fav){
+    public ItemDTO(String imageSrc, String name, String store, String cat, int price, float rating, int rating_person ,int fav){
         this.imageSrc = imageSrc;
         this.name = name;
         this.store = store;
@@ -27,7 +27,7 @@ public class ItemDTO {
         this.fav = fav;
     }
 
-    public ItemDTO(String imageSrc, String name, String store, String cat, int price, float rating, float rating_person, int fav, String id, Uri uri){
+    public ItemDTO(String imageSrc, String name, String store, String cat, int price, float rating, int rating_person, int fav, String id, String uri){
         this.imageSrc = imageSrc;
         this.name = name;
         this.store = store;
@@ -58,14 +58,14 @@ public class ItemDTO {
     public void setRating(float f){
         rating = f;
     }
-    public void setRating_person(float p){
-        rating_person = p;
+    public void setRating_person(int i){
+        rating_person = i;
     }
     public void setFav(int i){
         fav = i;
     }
     public void setId(String s) {id = s;}
-    public void setUri(Uri u) { uri = u; }
+    public void setUri(String u) { uri = u; }
 
     public String getImageSrc(){
         return imageSrc;
@@ -85,12 +85,12 @@ public class ItemDTO {
     public float getRating(){
         return rating;
     }
-    public float getRating_person(){
+    public int getRating_person(){
         return rating_person;
     }
     public int getFav(){
         return fav;
     }
     public String getId() {return id; }
-    public Uri getUri() { return uri; }
+    public String getUri() { return uri; }
 }

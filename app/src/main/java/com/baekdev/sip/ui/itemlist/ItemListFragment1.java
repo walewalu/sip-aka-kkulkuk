@@ -63,6 +63,7 @@ public class ItemListFragment1 extends Fragment{
         recyclerView.setAdapter(mAdapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        //카테고리 프래그먼트로부터 정보를 받음
         Bundle bundle = getArguments();
         String key = bundle.getString("Key");
         String value = bundle.getString("Value");
@@ -82,7 +83,7 @@ public class ItemListFragment1 extends Fragment{
                         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                i.setUri(uri);
+                                i.setUri(uri.toString());
                                 myDataset.add(i);
                                 mAdapter.notifyDataSetChanged();
                             }
@@ -102,7 +103,7 @@ public class ItemListFragment1 extends Fragment{
                         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                i.setUri(uri);
+                                i.setUri(uri.toString());
                                 myDataset.add(i);
                                 mAdapter.notifyDataSetChanged();
                             }

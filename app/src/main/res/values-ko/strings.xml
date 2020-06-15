@@ -11,4 +11,6 @@
     <string name="passwordconfirm">비밀번호 확인</string>
     <string name="tab_1">음료별</string>
     <string name="tab_2">브랜드별</string>
+    <string name="search">검색</string>
+    <string name="nickname">닉네임</string>
 </resources>

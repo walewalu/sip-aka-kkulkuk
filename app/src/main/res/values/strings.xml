@@ -11,7 +11,9 @@
     <string name="passwordconfirm">Password Confirm</string>
     <string name="tab_1">Beverage</string>
     <string name="tab_2">Brand</string>
+    <string name="search">Search</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="nickname">Nickname</string>
 </resources>

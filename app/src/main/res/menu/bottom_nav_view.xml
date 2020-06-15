@@ -2,22 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/searchItem"
-        android:icon="@android:drawable/ic_menu_search"
-        android:title="Search" />
+        android:icon="@drawable/navbar_search"
+        android:title="검색" />
     <item
         android:id="@+id/categoryItem"
         android:enabled="true"
-        android:icon="@android:drawable/ic_menu_info_details"
-        android:title="Category" />
-    <item
-        android:id="@+id/newsfeedItem"
-        android:enabled="true"
-        android:icon="@android:drawable/ic_menu_call"
-        android:title="Newsfeed" />
+        android:icon="@drawable/navbar_cat"
+        android:title="카테고리" />
     <item
         android:id="@+id/myPageItem"
         android:enabled="true"
-        android:icon="@android:drawable/ic_menu_info_details"
-        android:title="MyPage" />
-
+        android:icon="@drawable/navbar_info"
+        android:title="마이페이지" />
 </menu>

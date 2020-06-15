@@ -7,51 +7,100 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/user_image"
         android:layout_width="166dp"
         android:layout_height="172dp"
+        android:background="@color/cardview_shadow_start_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.419"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:layout_constraintTop_toBottomOf="@+id/mypage"
+        app:layout_constraintVertical_bias="0.087"
+        app:srcCompat="@drawable/fui_ic_anonymous_white_24dp" />
 
     <TextView
         android:id="@+id/mypage"
-        android:layout_width="107dp"
-        android:layout_height="57dp"
-        android:text="마이페이지"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/jalnan"
+        android:text="My info"
         android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/image"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.802" />
+        app:layout_constraintVertical_bias="0.102" />
 
-    <EditText
-        android:id="@+id/nick"
+    <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_image"
+        app:layout_constraintVertical_bias="0.046">
+
+        <TextView
+            android:id="@+id/user_nick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/jalnan"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/user_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jalnan"
+            android:gravity="center"
+            android:text=""
+            android:textColor="#C8C8C8" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/image"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="@+id/image"
-        app:layout_constraintTop_toBottomOf="@+id/image"
-        app:layout_constraintVertical_bias="0.124" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.243">
 
-    <Button
-        android:id="@+id/save_b"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="이름 저장"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="509dp"
-        tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/edit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/cardview_light_background"
+            android:fontFamily="@font/jalnan"
+            android:text="수정"
+            tools:ignore="MissingConstraints" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:fontFamily="@font/jalnan"
+            android:text="로그아웃" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,28 +29,25 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.MyView
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
+        RelativeLayout relativeLayout;
         LinearLayout linearLayout;
         ImageView imageView;
         TextView textView_name;
         TextView textView_store;
         TextView textView_price;
+        TextView textView_rating;
+        TextView textView_fav;
 
         public MyViewHolder(View v) {
             super(v);
+            relativeLayout = (RelativeLayout) v.findViewById(R.id.relative_layout);
             linearLayout = (LinearLayout) v.findViewById(R.id.layout_style2);
             imageView = (ImageView) v.findViewById(R.id.item_image);
             textView_name = (TextView) v.findViewById(R.id.item_name);
             textView_store = (TextView) v.findViewById(R.id.store_name);
             textView_price = (TextView) v.findViewById(R.id.item_price);
-
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ItemInfoActivity itemInfoActivity = new ItemInfoActivity();
-                    Intent intent = new Intent(v.getContext(), itemInfoActivity.getClass());
-                    v.getContext().startActivity(intent);
-                }
-            });
+            textView_rating = (TextView) v.findViewById(R.id.item_rating);
+            textView_fav = (TextView) v.findViewById(R.id.item_fav);
         }
     }
 
@@ -93,6 +91,29 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.MyView
         holder.textView_price.setText(itemDTO.getPrice() + "원~");
         holder.textView_price.setTextColor(Color.BLACK);
         holder.textView_price.setShadowLayer(1.0f, 1.0f,1.0f, Color.GRAY);
+
+        float avrgRating = 0.0f;
+        if (itemDTO.getRating_person() > 0) {
+            avrgRating = itemDTO.getRating() / itemDTO.getRating_person();
+        }
+
+        holder.textView_rating.setText(String.format("%.2f", avrgRating));
+        holder.textView_rating.setTextColor(Color.BLACK);
+        holder.textView_rating.setShadowLayer(1.0f, 1.0f,1.0f, Color.GRAY);
+
+        holder.textView_fav.setText(Integer.toString(itemDTO.getFav()));
+        holder.textView_fav.setTextColor(Color.BLACK);
+        holder.textView_fav.setShadowLayer(1.0f, 1.0f,1.0f, Color.GRAY);
+
+        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ItemInfoActivity.class);
+                intent.putExtra("id", itemDTO.getId());
+                intent.putExtra("store", itemDTO.getStore());
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)
