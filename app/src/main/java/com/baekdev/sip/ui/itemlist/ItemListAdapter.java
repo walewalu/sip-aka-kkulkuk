@@ -15,13 +15,11 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.baekdev.sip.ItemInfoActivity;
-import com.baekdev.sip.MainActivity;
 import com.baekdev.sip.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.MyViewHolder> {
     private ArrayList<ItemDTO> mDataset;
@@ -66,7 +64,7 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.MyView
     }
 
     // Replace the contents of a view (invoked by the layout manager)
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "ResourceAsColor"})
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         final ItemDTO itemDTO = mDataset.get(position);
@@ -81,15 +79,15 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.MyView
         Glide.with(mContext).load(itemDTO.getUri()).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.imageView);
 
         holder.textView_name.setText(itemDTO.getName());
-        holder.textView_name.setTextColor(Color.BLACK);
+        holder.textView_name.setTextColor(R.color.SipDarkGray);
         holder.textView_name.setShadowLayer(1.0f, 1.0f,1.0f, Color.GRAY);
 
         holder.textView_store.setText(itemDTO.getStore());
-        holder.textView_store.setTextColor(Color.BLACK);
+        holder.textView_store.setTextColor(Color.GRAY);
         holder.textView_store.setShadowLayer(1.0f, 1.0f,1.0f, Color.GRAY);
 
         holder.textView_price.setText(itemDTO.getPrice() + "원~");
-        holder.textView_price.setTextColor(Color.BLACK);
+        holder.textView_price.setTextColor(Color.GRAY);
         holder.textView_price.setShadowLayer(1.0f, 1.0f,1.0f, Color.GRAY);
 
         float avrgRating = 0.0f;
@@ -98,11 +96,11 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.MyView
         }
 
         holder.textView_rating.setText(String.format("%.2f", avrgRating));
-        holder.textView_rating.setTextColor(Color.BLACK);
+        holder.textView_rating.setTextColor(R.color.SipDarkGray);
         holder.textView_rating.setShadowLayer(1.0f, 1.0f,1.0f, Color.GRAY);
 
         holder.textView_fav.setText(Integer.toString(itemDTO.getFav()));
-        holder.textView_fav.setTextColor(Color.BLACK);
+        holder.textView_fav.setTextColor(R.color.SipDarkGray);
         holder.textView_fav.setShadowLayer(1.0f, 1.0f,1.0f, Color.GRAY);
 
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {

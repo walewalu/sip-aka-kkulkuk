@@ -1,7 +1,5 @@
 package com.baekdev.sip.ui.mypage;
 
-import android.net.Uri;
-
 public class UserModel {
     public String name;
     public String imageSrc;

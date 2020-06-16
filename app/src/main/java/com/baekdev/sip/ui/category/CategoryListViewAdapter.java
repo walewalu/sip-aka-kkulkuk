@@ -11,10 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.baekdev.sip.R;
-import com.bumptech.glide.Glide;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
 import java.util.ArrayList;
 
 public class CategoryListViewAdapter extends BaseAdapter {

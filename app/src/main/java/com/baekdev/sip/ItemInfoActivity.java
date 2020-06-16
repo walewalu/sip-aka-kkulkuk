@@ -3,6 +3,7 @@ package com.baekdev.sip;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -25,8 +27,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -34,10 +34,13 @@ import java.util.HashMap;
 
 public class ItemInfoActivity extends AppCompatActivity {
     private ItemDTO data;
+    private FirebaseFirestore db;
+    private DocumentReference docRef;
     private boolean isEvaluate = false;
     private float fin_rating = 0.0f;
     private float pre_rating = 0.0f;
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,7 @@ public class ItemInfoActivity extends AppCompatActivity {
         final TextView textView_price = (TextView) findViewById(R.id.info_price);
         final RatingBar ratingBar = (RatingBar) findViewById(R.id.info_rating);
         final Button acceptButton = (Button) findViewById(R.id.info_accept);
+        final ImageButton backButton = (ImageButton) findViewById(R.id.back1);
 
         //CategoryTabFragment로부터 넘겨 받은 정보
         Intent intent = getIntent();
@@ -68,8 +72,8 @@ public class ItemInfoActivity extends AppCompatActivity {
         //파이어베이스 인증, 현재 유저, 데이터베이스, 스토리지 사용 시 선언
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser mUser = mAuth.getCurrentUser();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        final DocumentReference docRef = db.collection(store).document(id);
+        db = FirebaseFirestore.getInstance();
+        docRef = db.collection(store).document(id);
         final FirebaseStorage storage = FirebaseStorage.getInstance();
 
         //유저 데이터 불러오기 ("user" 컬렉션의 사용자 uid로 저장되어 있는 문서)
@@ -90,20 +94,26 @@ public class ItemInfoActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                 if (task.isSuccessful()) {
                                     DocumentSnapshot document = task.getResult();
-                                    if (document.exists() && document.getDouble(id) != null) {
-                                        if (document.getDouble(id) > 0) {
-                                            float f = document.getDouble(id).floatValue();
-                                            pre_rating = pre_rating - f;
-                                            fin_rating = f;
-                                            ratingBar.setRating(fin_rating);
-                                            isEvaluate = true;
-                                        } else {
-                                            fin_rating = 0.0f;
-                                            isEvaluate = false;
+                                    if (document.exists()) {
+                                        if (document.getDouble(id) != null) {
+                                            if (document.getDouble(id) > 0){
+                                                float f = document.getDouble(id).floatValue();
+                                                pre_rating = pre_rating - f;
+                                                fin_rating = f;
+                                                ratingBar.setRating(fin_rating);
+                                                isEvaluate = true;
+                                            } else {
+                                                fin_rating = 0.0f;
+                                                isEvaluate = false;
+                                            }
                                         }
                                     } else {
                                         fin_rating = 0.0f;
                                         isEvaluate = false;
+                                        HashMap<String, Object> map = new HashMap<>();
+                                        map.put(id, fin_rating);
+                                        userRef.collection("evaluate")
+                                                .document("evaluate").set(map);
                                     }
                                 }
                             }
@@ -141,7 +151,6 @@ public class ItemInfoActivity extends AppCompatActivity {
                 map.put("rating", pre_rating + data.getRating());
                 if (!isEvaluate)
                     map.put("rating_person", data.getRating_person() + 1);
-                map.put("fav", data.getFav() + 1);
                 docRef.update(map);
                 HashMap<String, Object> usermap = new HashMap<>();
                 usermap.put(id, fin_rating);
@@ -151,9 +160,23 @@ public class ItemInfoActivity extends AppCompatActivity {
             }
         });
 
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         // 텍스트뷰 설정
         textView_name.setShadowLayer(1.0f, 1.0f,1.0f, Color.GRAY);
         textView_store.setShadowLayer(1.0f, 1.0f,1.0f, Color.GRAY);
         textView_price.setShadowLayer(1.0f, 1.0f,1.0f, Color.GRAY);
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("fav", data.getFav() + 1);
+        docRef.update(map);
     }
 }

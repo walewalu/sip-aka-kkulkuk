@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 
 import com.baekdev.sip.MainActivity;
 import com.baekdev.sip.R;
-import com.baekdev.sip.ui.itemlist.ItemListFragment1;
 import com.baekdev.sip.ui.itemlist.ItemListFragment2;
 
 public class CategoryTab2Fragment extends Fragment {

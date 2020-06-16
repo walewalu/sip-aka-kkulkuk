@@ -1,11 +1,9 @@
 package com.baekdev.sip.ui.category;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -16,8 +14,8 @@ import com.baekdev.sip.R;
 import com.baekdev.sip.ui.itemlist.ItemListFragment1;
 
 public class CategoryTab1Fragment extends Fragment{
-    private String[] cats = {"Blended", "Soda", "Espresso", "Tea", "Juice", "Brewed", "Others"};
-    private int[] images = {R.drawable.blended, R.drawable.soda, R.drawable.espresso, R.drawable.tea, R.drawable.juice, R.drawable.brewed, R.drawable.others};
+    private String[] cats = {"Espresso", "Blended", "Soda"};
+    private int[] images = {R.drawable.espresso, R.drawable.blended, R.drawable.soda};
 
     public CategoryTab1Fragment() {
         // Required empty public constructor

@@ -10,13 +10,10 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.baekdev.sip.ui.itemlist.ItemDTO;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private FragmentManager fm = getSupportFragmentManager();
@@ -66,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        // createData();
+
+        //new ItemData().createData();
     }
 
     public void replaceFragment(Fragment fragment){
@@ -75,20 +73,5 @@ public class MainActivity extends AppCompatActivity {
         ft.replace(R.id.frameLayout, fragment);
         ft.addToBackStack(null);
         ft.commitAllowingStateLoss();
-    }
-
-    // 데이터 추가
-    private void createData(){
-        ArrayList<ItemDTO> items = new ArrayList<ItemDTO>();
-        items.add(new ItemDTO("store/coffeebean/blended/Sparkling Mango.jpg",
-                "스파클링 망고", "커피빈",
-                "Soda", 6300, 0.0f, 0, 0));
-
-        int n = 1;
-        for (ItemDTO i : items){
-            String s = "cbeansoda1" + String.format("%03d", n++);
-            i.setId(s);
-            db.collection("coffeebean").document(i.getId()).set(i);
-        }
     }
 }

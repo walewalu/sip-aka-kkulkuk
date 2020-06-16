@@ -1,7 +1,6 @@
 package com.baekdev.sip;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.baekdev.sip.ui.itemlist.ItemListFragment1;
 import com.baekdev.sip.ui.itemlist.ItemListFragment3;
 
 public class SearchFragment extends Fragment {

@@ -12,9 +12,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import com.baekdev.sip.ui.itemlist.ItemDTO;
 import com.baekdev.sip.ui.mypage.UserModel;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -32,14 +32,13 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 
 public class UserInfoActivity extends AppCompatActivity {
     private UserModel userModel;
     private ImageView uImage;
     private Button saveButton;
+    private ImageButton backButton;
     private EditText uNick;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
@@ -56,6 +55,7 @@ public class UserInfoActivity extends AppCompatActivity {
         uImage = (ImageView) findViewById(R.id.edit_user_image);
         uNick = (EditText) findViewById(R.id.edit_user_nick);
         saveButton = (Button) findViewById(R.id.save_button);
+        backButton = (ImageButton) findViewById(R.id.back2);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         mStorage = FirebaseStorage.getInstance();
@@ -98,6 +98,13 @@ public class UserInfoActivity extends AppCompatActivity {
                 DocumentReference ref = db.collection("user").document(mUser.getUid());
                 userModel.setName(uNick.getText().toString());
                 ref.set(userModel);
+                finish();
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 finish();
             }
         });

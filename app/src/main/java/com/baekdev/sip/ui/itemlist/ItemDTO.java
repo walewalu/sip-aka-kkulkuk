@@ -1,7 +1,5 @@
 package com.baekdev.sip.ui.itemlist;
 
-import android.net.Uri;
-
 public class ItemDTO {
     private String imageSrc;
     private String name;
