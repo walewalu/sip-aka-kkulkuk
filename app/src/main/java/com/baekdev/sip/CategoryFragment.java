@@ -1,5 +1,6 @@
 package com.baekdev.sip;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +12,10 @@ import androidx.viewpager.widget.ViewPager;
 import com.baekdev.sip.ui.category.CategoryPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
-public class CategoryFragment extends Fragment {
 
+public class CategoryFragment extends Fragment {
+    ViewPager viewPager;
+    static CategoryPagerAdapter categoryPagerAdapter;
     public CategoryFragment() {
         // Required empty public constructor
     }
@@ -20,7 +23,11 @@ public class CategoryFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
+    @Override
+    public void onResume(){
+        super.onResume();
+        categoryPagerAdapter.notifyDataSetChanged();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -30,8 +37,8 @@ public class CategoryFragment extends Fragment {
         tabs.addTab(tabs.newTab().setText(R.string.tab_1));
         tabs.addTab(tabs.newTab().setText(R.string.tab_2));
 
-        final ViewPager viewPager = view.findViewById(R.id.view_pager);
-        final CategoryPagerAdapter categoryPagerAdapter = new CategoryPagerAdapter(2, getContext(), getChildFragmentManager());
+        viewPager= view.findViewById(R.id.view_pager);
+        categoryPagerAdapter = new CategoryPagerAdapter(2, getContext(), getChildFragmentManager());
         viewPager.setAdapter(categoryPagerAdapter);
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabs));
@@ -51,6 +58,7 @@ public class CategoryFragment extends Fragment {
 
             }
         });
+
 
         return view;
     }

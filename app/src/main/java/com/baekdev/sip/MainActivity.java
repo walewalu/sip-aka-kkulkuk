@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.baekdev.sip.ui.category.CategoryPagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private CategoryFragment categoryFragment = new CategoryFragment();
     private MyPageFragment myPageFragment = new MyPageFragment();
     private FirebaseFirestore db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,10 @@ public class MainActivity extends AppCompatActivity {
 
         //new ItemData().createData();
     }
+
+
+
+
 
     public void replaceFragment(Fragment fragment){
         FragmentManager fm = getSupportFragmentManager();

@@ -35,9 +35,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textColor="@color/SipDarkGray"
             android:fontFamily="@font/jalnan"
             android:gravity="center"
+            android:textColor="@color/SipDarkGray"
             android:textSize="18sp" />
 
         <LinearLayout
@@ -51,20 +51,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
-                android:textColor="@color/SiplightGray"
-                android:fontFamily="@font/jalnan"
                 android:layout_weight="1"
-                android:gravity="right" />
+                android:fontFamily="@font/jalnan"
+                android:gravity="right"
+                android:textColor="@color/SiplightGray" />
 
             <TextView
                 android:id="@+id/info_price"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
-                android:fontFamily="@font/jalnan"
-                android:textColor="@color/SiplightGray"
                 android:layout_weight="1"
-                android:gravity="left" />
+                android:fontFamily="@font/jalnan"
+                android:gravity="left"
+                android:textColor="@color/SiplightGray" />
+
+            <ImageView
+                android:id="@+id/imagebtn"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="70dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="0"
+                app:srcCompat="@drawable/heart_red" />
         </LinearLayout>
 
     </LinearLayout>
